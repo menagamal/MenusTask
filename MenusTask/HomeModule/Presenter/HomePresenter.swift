@@ -31,6 +31,7 @@ class HomePresenter: HomePresenterDelegate {
     
     func getAllTags() {
         interactor?.getAllTags(index: pageCounter, completation: { (tags) in
+            self.pageCounter += 1 
             self.view?.didLoadAllTags(tags: tags)
         })
     }

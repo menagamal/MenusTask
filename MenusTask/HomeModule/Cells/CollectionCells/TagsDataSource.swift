@@ -10,16 +10,17 @@
 import Foundation
 import UIKit
 
-class TagsDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate ,UICollectionViewDelegateFlowLayout {
+class TagsDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate ,UICollectionViewDelegateFlowLayout ,UICollectionViewDataSourcePrefetching{
     
     var tags: [TagModel] = [TagModel]()
     var collection:UICollectionView!
+    var delegate:TagsDataSourceActions!
     
     override init() {
         super.init()
     }
     
-    init(collection:UICollectionView,tags:[TagModel]) {
+    init(collection:UICollectionView,tags:[TagModel],delegate:TagsDataSourceActions) {
         super.init()
         
         self.collection = collection
@@ -28,9 +29,13 @@ class TagsDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDele
         
         self.collection.register(UINib(nibName: "TagCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TagCollectionViewCell")
         
+        self.collection.prefetchDataSource = self
+        
         self.collection.dataSource = self
         
         self.collection.delegate = self
+        
+        self.delegate = delegate
         
         self.collection.reloadData()
     }
@@ -42,20 +47,27 @@ class TagsDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCollectionViewCell",for: indexPath) as! TagCollectionViewCell
         cell.setDetails(tag: tags[indexPath.row])
+        
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == tags.count - 1 {
+            self.delegate.loadTheNextPage()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let item = tags[indexPath.row]
+        self.delegate.didSelectTag(tag: item)
     }
     
-//    func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        
-//        let padding: CGFloat = 5
-//        let width = collectionView.frame.size.width/4 - padding
-//        let height = collectionView.frame.size.height - padding
-//        return CGSize(width: width, height: height)
-//        
-//    }
-    
+}
+
+
+protocol TagsDataSourceActions {
+    func loadTheNextPage()
+    func didSelectTag(tag:TagModel)
 }

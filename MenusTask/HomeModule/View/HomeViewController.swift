@@ -20,16 +20,25 @@ class HomeViewController: UIViewController {
         presenter = HomePresenter(interactor: HomeInteractor(), router: HomeRouter(navigationController: self.navigationController!), view: self)
         presenter.getAllTags()
     }
-
+    
 }
 
-
-extension HomeViewController:HomeView{
+extension HomeViewController:HomeView ,TagsDataSourceActions {
+    
     func didLoadAllTags(tags: [TagModel]) {
         DispatchQueue.main.async {
-            self.tagsDataSource = TagsDataSource(collection: self.tagsCollection, tags: tags)
+            self.tagsDataSource = TagsDataSource(collection: self.tagsCollection, tags: tags,delegate: self)
         }
         
     }
+    func loadTheNextPage() {
+        // Load Next Page
+        self.presenter.getAllTags()
+    }
+    
+    func didSelectTag(tag: TagModel) {
+        // Call The List API
+    }
+    
 }
 

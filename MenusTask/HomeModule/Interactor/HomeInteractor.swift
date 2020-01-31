@@ -16,26 +16,32 @@ protocol HomeUseCase {
 class HomeInteractor: HomeUseCase {
     
     var provider = MoyaProvider<HomeTarget>(callbackQueue: DispatchQueue.global(qos: .utility))
+    var tags = [TagModel]()
     
     func getAllTags(index: Int, completation: @escaping(([TagModel]) -> Void)) {
+        LoadingView.shared.startLoading()
         provider.request(.getAllTags(index: index)) { result in
+            LoadingView.shared.stopLoading()
             switch(result) {
             case .success(let response):
                 DispatchQueue.main.async {
                     do {
                         if response.statusCode == AppConstant.API.Codes.success.rawValue {
                             let responseModel: TagResponse = try response.map(TagResponse.self)
-                            completation(responseModel.tags!)
+                            for item in responseModel.tags! {
+                                self.tags.append(item)
+                            }
+                            completation(self.tags)
                         } else {
-                            completation([TagModel]())
+                            completation(self.tags)
                         }
                     } catch{
-                        completation([TagModel]())
+                        completation(self.tags)
                     }
                 }
             case .failure(_):
                 DispatchQueue.main.async {
-                    completation([TagModel]())
+                    completation(self.tags)
                 }
             }
         }
