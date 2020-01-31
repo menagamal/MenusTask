@@ -9,5 +9,6 @@
 import Foundation
 
 protocol HomeView:class {
-    func didLoadAllTags(tags:[TagModel])  
+    func didLoadAllTags(tags:[TagModel])
+    func showError(errorStr:String)
 }

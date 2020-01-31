@@ -39,6 +39,11 @@ extension HomeViewController:HomeView ,TagsDataSourceActions {
     func didSelectTag(tag: TagModel) {
         // Call The List API
     }
+    func showError(errorStr: String) {
+        // SHow ERROR
+        
+    }
+    
     
 }
 

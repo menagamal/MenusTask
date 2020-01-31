@@ -30,9 +30,17 @@ class HomePresenter: HomePresenterDelegate {
     }
     
     func getAllTags() {
-        interactor?.getAllTags(index: pageCounter, completation: { (tags) in
-            self.pageCounter += 1 
-            self.view?.didLoadAllTags(tags: tags)
+        interactor?.getAllTags(index: pageCounter, completation: { (response) in
+            
+            
+            if let error = response.0 {
+                self.view?.showError(errorStr: error.localizedDescription)
+            } else {
+                let tags = response.1
+                self.pageCounter += 1
+                self.view?.didLoadAllTags(tags: tags)
+            }
+            
         })
     }
     

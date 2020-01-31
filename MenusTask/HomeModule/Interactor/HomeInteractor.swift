@@ -9,8 +9,11 @@
 import Foundation
 import Moya
 
+
+typealias HomeTagResponse = (Error?,[TagModel])
+
 protocol HomeUseCase {
-    func getAllTags(index:Int,completation:@escaping(([TagModel])-> Void))
+    func getAllTags(index:Int,completation:@escaping( (HomeTagResponse)-> Void))
 }
 
 class HomeInteractor: HomeUseCase {
@@ -18,7 +21,7 @@ class HomeInteractor: HomeUseCase {
     var provider = MoyaProvider<HomeTarget>(callbackQueue: DispatchQueue.global(qos: .utility))
     var tags = [TagModel]()
     
-    func getAllTags(index: Int, completation: @escaping(([TagModel]) -> Void)) {
+    func getAllTags(index: Int, completation: @escaping((HomeTagResponse) -> Void)) {
         LoadingView.shared.startLoading()
         provider.request(.getAllTags(index: index)) { result in
             LoadingView.shared.stopLoading()
@@ -31,24 +34,21 @@ class HomeInteractor: HomeUseCase {
                             for item in responseModel.tags! {
                                 self.tags.append(item)
                             }
-                            completation(self.tags)
+                            completation((nil,self.tags))
                         } else {
-                            completation(self.tags)
+                            completation((HomeConstant.HomeError.InvalidURL,self.tags))
                         }
                     } catch{
-                        completation(self.tags)
+                        completation((HomeConstant.HomeError.ParsingError,self.tags))
                     }
                 }
             case .failure(_):
                 DispatchQueue.main.async {
-                    completation(self.tags)
+                    completation((HomeConstant.HomeError.InvalidURL,self.tags))
                 }
             }
         }
         
     }
-    
-    
-    
     
 }

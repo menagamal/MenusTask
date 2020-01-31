@@ -24,4 +24,18 @@ enum HomeConstant {
             """
         }
     }
+    
+    enum HomeError :Error {
+        case InvalidURL
+        case ParsingError
+        var localizedDescription: String {
+            switch self {
+            case .ParsingError:
+                return "the data could not be read in the correct format."
+            case .InvalidURL:
+                return "Invalid Url Request"
+            }
+        }
+    }
+    
 }
