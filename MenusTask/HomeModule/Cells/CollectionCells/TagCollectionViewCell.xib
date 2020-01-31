@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TagCollectionViewCell" customModule="MenusTask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="174" height="211"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="174" height="211"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWf-KY-1Rb">
+                        <rect key="frame" x="4" y="4" width="166" height="203"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Jvf-56-aNB" customClass="CircularImageView" customModule="MenusTask" customModuleProvider="target">
+                                <rect key="frame" x="14" y="17" width="138" height="138"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Jvf-56-aNB" secondAttribute="height" multiplier="1:1" id="Ski-1c-xCw"/>
+                                    <constraint firstAttribute="height" constant="138" id="lYd-lu-chf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Njo-eB-i5z">
+                                <rect key="frame" x="62" y="163" width="42" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Jvf-56-aNB" firstAttribute="leading" secondItem="vWf-KY-1Rb" secondAttribute="leading" constant="14" id="3WV-nc-HB1"/>
+                            <constraint firstItem="Njo-eB-i5z" firstAttribute="top" secondItem="Jvf-56-aNB" secondAttribute="bottom" constant="8" id="5w0-Fb-08v"/>
+                            <constraint firstAttribute="bottom" secondItem="Njo-eB-i5z" secondAttribute="bottom" constant="8" id="K6v-kh-IqP"/>
+                            <constraint firstAttribute="trailing" secondItem="Jvf-56-aNB" secondAttribute="trailing" constant="14" id="OFQ-Th-6XT"/>
+                            <constraint firstItem="Njo-eB-i5z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vWf-KY-1Rb" secondAttribute="leading" constant="4" id="PXe-rU-WOL"/>
+                            <constraint firstItem="Jvf-56-aNB" firstAttribute="top" secondItem="vWf-KY-1Rb" secondAttribute="top" constant="17" id="SIZ-0b-pF4"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Njo-eB-i5z" secondAttribute="trailing" constant="4" id="WG3-Wy-ZsG"/>
+                            <constraint firstAttribute="height" constant="203" id="ZkU-D7-WAa"/>
+                            <constraint firstItem="Jvf-56-aNB" firstAttribute="centerX" secondItem="vWf-KY-1Rb" secondAttribute="centerX" id="hMS-14-RoS"/>
+                            <constraint firstItem="Njo-eB-i5z" firstAttribute="centerX" secondItem="Jvf-56-aNB" secondAttribute="centerX" id="huu-O2-d9p"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="vWf-KY-1Rb" secondAttribute="trailing" constant="4" id="2SZ-vd-LlB"/>
+                <constraint firstItem="vWf-KY-1Rb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="PMZ-H6-9Ix"/>
+                <constraint firstAttribute="bottom" secondItem="vWf-KY-1Rb" secondAttribute="bottom" constant="4" id="jID-Gr-K6o"/>
+                <constraint firstItem="vWf-KY-1Rb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="pcg-So-Pga"/>
+            </constraints>
+            <size key="customSize" width="174" height="211"/>
+            <connections>
+                <outlet property="labelTagName" destination="Njo-eB-i5z" id="gbs-od-ObW"/>
+                <outlet property="tagImageView" destination="Jvf-56-aNB" id="4lg-b7-xMt"/>
+            </connections>
+            <point key="canvasLocation" x="86.956521739130437" y="120.87053571428571"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="placeholder" width="225" height="225"/>
+    </resources>
+</document>
