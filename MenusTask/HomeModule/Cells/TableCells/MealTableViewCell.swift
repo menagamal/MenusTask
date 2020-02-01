@@ -19,7 +19,12 @@ class MealTableViewCell: UITableViewCell {
             mealImageView.setImageWithUrl(url: url)
         }
         
+        
         labelId.text = "#\(meal.id!)"
         labelName.text = meal.name
+        
+        mealImageView.hero.id = "foo"
+        
+        
     }
 }

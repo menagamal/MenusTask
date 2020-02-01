@@ -9,7 +9,13 @@
 import Foundation
 import UIKit
 extension UIViewController{
-
+    static var identifier: String {
+          return String(describing: self)
+      }
+    class func instanceXib<T: UIViewController>() -> T {
+        return T(nibName: T.identifier, bundle: nil)
+    }
+    
     func showErrorMessage(error:String, btnAction:(()->Void)! = nil){
         let alert = UIAlertController(title: nil, message: error, preferredStyle: .alert)
         let done = UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .default) { (action) in

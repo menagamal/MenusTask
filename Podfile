@@ -10,6 +10,7 @@ target 'MenusTask' do
   pod 'IQKeyboardManagerSwift'
   pod 'SDWebImage', '~> 4.0'
   pod 'Toast-Swift'
+  pod 'Hero'
 
   target 'MenusTaskTests' do
     inherit! :search_paths

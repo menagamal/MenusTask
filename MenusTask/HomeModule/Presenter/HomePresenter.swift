@@ -10,6 +10,8 @@ import Foundation
 
 protocol HomePresenterDelegate {
     func getAllTags()
+    func getAllMeals(str:String)
+    func showMealDetails(meal:MealModel)
 }
 
 class HomePresenter: HomePresenterDelegate {
@@ -56,6 +58,12 @@ class HomePresenter: HomePresenterDelegate {
             
         })
     }
+    
+    func showMealDetails(meal: MealModel) {
+//        self.router?.present(to: .showDetails(meal: meal))
+        self.router?.navigate(to:.showDetails(meal: meal))
+    }
+    
     
 }
 

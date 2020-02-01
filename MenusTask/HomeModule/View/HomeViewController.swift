@@ -21,6 +21,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.mealsTableView.hero.id = "bar"
         presenter = HomePresenter(interactor: HomeInteractor(), router: HomeRouter(navigationController: self.navigationController!), view: self)
         presenter.getAllTags()
     }
@@ -61,7 +64,7 @@ extension HomeViewController:HomeView ,TagsDataSourceActions ,MealDatasourceDele
     
     func didSelectMeal(meal: MealModel) {
         //
-        
+        self.presenter.showMealDetails(meal: meal)
     }
     func showError(errorStr: String) {
         // SHow ERROR
