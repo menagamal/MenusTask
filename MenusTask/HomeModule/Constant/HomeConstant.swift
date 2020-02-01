@@ -23,6 +23,23 @@ enum HomeConstant {
             }
             """
         }
+        
+        
+        enum getAllMeals {
+            static let endPoint = "items"
+            static let SampleData =
+            """
+            {
+            "items": [
+                {
+                   "id": 132548,
+                    "name": "1 - Egyptian -  French Fries",
+                    "photoUrl": "https://s3.amazonaws.com/elmenusV3/Photos/Normal/i4g2ehuqrvuw61or.jpg",
+                    "description": "Custom premium cut by farm frites. Add melted cheese for 7LE - chili con carne for 9LE"
+                } ]
+            }
+            """
+        }
     }
     
     enum HomeError :Error {

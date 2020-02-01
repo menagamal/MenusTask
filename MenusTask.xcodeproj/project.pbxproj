@@ -36,6 +36,10 @@
 		D0D9FB9123E491E400269AD9 /* TagsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D9FB9023E491E400269AD9 /* TagsDataSource.swift */; };
 		D0D9FB9323E4B3D300269AD9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D9FB9223E4B3D300269AD9 /* LoadingView.swift */; };
 		D0D9FB9623E4D61300269AD9 /* HomeInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D9FB9523E4D61300269AD9 /* HomeInteractorMock.swift */; };
+		D0D9FB9823E4EC0700269AD9 /* MealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D9FB9723E4EC0700269AD9 /* MealModel.swift */; };
+		D0D9FB9B23E4F59100269AD9 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D9FB9923E4F59100269AD9 /* MealTableViewCell.swift */; };
+		D0D9FB9C23E4F59100269AD9 /* MealTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0D9FB9A23E4F59100269AD9 /* MealTableViewCell.xib */; };
+		D0D9FB9E23E4F75700269AD9 /* MealTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D9FB9D23E4F75700269AD9 /* MealTableDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +98,10 @@
 		D0D9FB9023E491E400269AD9 /* TagsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsDataSource.swift; sourceTree = "<group>"; };
 		D0D9FB9223E4B3D300269AD9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D0D9FB9523E4D61300269AD9 /* HomeInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorMock.swift; sourceTree = "<group>"; };
+		D0D9FB9723E4EC0700269AD9 /* MealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealModel.swift; sourceTree = "<group>"; };
+		D0D9FB9923E4F59100269AD9 /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
+		D0D9FB9A23E4F59100269AD9 /* MealTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealTableViewCell.xib; sourceTree = "<group>"; };
+		D0D9FB9D23E4F75700269AD9 /* MealTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableDataSource.swift; sourceTree = "<group>"; };
 		D45DC173AF2F83C5EF742817 /* Pods-MenusTask-MenusTaskUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenusTask-MenusTaskUITests.release.xcconfig"; path = "Target Support Files/Pods-MenusTask-MenusTaskUITests/Pods-MenusTask-MenusTaskUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EE27A0DF2FDF4CB3487F49CE /* Pods_MenusTaskTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MenusTaskTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF746C8F51607FEA89DD63C1 /* Pods-MenusTaskTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenusTaskTests.debug.xcconfig"; path = "Target Support Files/Pods-MenusTaskTests/Pods-MenusTaskTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -226,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				D0D9FB6D23E47D0800269AD9 /* TagModel.swift */,
+				D0D9FB9723E4EC0700269AD9 /* MealModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -322,6 +331,9 @@
 		D0D9FB8723E48F4100269AD9 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
+				D0D9FB9923E4F59100269AD9 /* MealTableViewCell.swift */,
+				D0D9FB9A23E4F59100269AD9 /* MealTableViewCell.xib */,
+				D0D9FB9D23E4F75700269AD9 /* MealTableDataSource.swift */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
@@ -445,6 +457,7 @@
 			files = (
 				D0D9FB3523E4770E00269AD9 /* LaunchScreen.storyboard in Resources */,
 				D0D9FB8B23E48F5300269AD9 /* TagCollectionViewCell.xib in Resources */,
+				D0D9FB9C23E4F59100269AD9 /* MealTableViewCell.xib in Resources */,
 				D0D9FB3223E4770E00269AD9 /* Assets.xcassets in Resources */,
 				D0D9FB3023E4770C00269AD9 /* Main.storyboard in Resources */,
 			);
@@ -576,6 +589,7 @@
 			files = (
 				D0D9FB6E23E47D0800269AD9 /* TagModel.swift in Sources */,
 				D0D9FB7A23E47FC400269AD9 /* AppConstant.swift in Sources */,
+				D0D9FB9B23E4F59100269AD9 /* MealTableViewCell.swift in Sources */,
 				D0D9FB2D23E4770C00269AD9 /* HomeViewController.swift in Sources */,
 				D0D9FB7023E47D1000269AD9 /* HomeRouter.swift in Sources */,
 				D0D9FB8123E481B500269AD9 /* HomeTarget.swift in Sources */,
@@ -584,6 +598,7 @@
 				D0D9FB2B23E4770C00269AD9 /* SceneDelegate.swift in Sources */,
 				D0D9FB7423E47DF600269AD9 /* UIApplication+Extentions.swift in Sources */,
 				D0D9FB7E23E4802A00269AD9 /* HomeConstant.swift in Sources */,
+				D0D9FB9823E4EC0700269AD9 /* MealModel.swift in Sources */,
 				D0D9FB8423E4837900269AD9 /* HomeBuilder.swift in Sources */,
 				D0D9FB9123E491E400269AD9 /* TagsDataSource.swift in Sources */,
 				D0D9FB8F23E491B800269AD9 /* CircularImageView.swift in Sources */,
@@ -592,6 +607,7 @@
 				D0D9FB6C23E47CFB00269AD9 /* HomePresenter.swift in Sources */,
 				D0D9FB6A23E47CF200269AD9 /* HomeInteractor.swift in Sources */,
 				D0D9FB9323E4B3D300269AD9 /* LoadingView.swift in Sources */,
+				D0D9FB9E23E4F75700269AD9 /* MealTableDataSource.swift in Sources */,
 				D0D9FB8D23E4914300269AD9 /* UIImageView+Extentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

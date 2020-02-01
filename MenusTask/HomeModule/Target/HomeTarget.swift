@@ -13,6 +13,7 @@ typealias MoyaMethod = Moya.Method
 
 enum HomeTarget {
     case getAllTags(index:Int)
+    case getAllMeals(str:String)
 }
 
 extension HomeTarget: TargetType {
@@ -26,14 +27,15 @@ extension HomeTarget: TargetType {
         case .getAllTags(let index):
             return HomeConstant.API.getAllTags.endPoint + "/\(index)"
             
+        case .getAllMeals(let str):
+            return HomeConstant.API.getAllMeals.endPoint + "/\(str)"
         }
     }
     
     var method: MoyaMethod {
         switch self {
-            
-            
-        case .getAllTags(_):
+
+        case .getAllTags(_),.getAllMeals(_):
             return .get
             
         }
@@ -41,7 +43,8 @@ extension HomeTarget: TargetType {
     
     var sampleData: Data {
         switch self {
-            
+        case .getAllMeals(_):
+            return  HomeConstant.API.getAllMeals.SampleData.data(using: String.Encoding.utf8)!
         case .getAllTags(_):
             return  HomeConstant.API.getAllTags.SampleData.data(using: String.Encoding.utf8)!
             
@@ -50,7 +53,7 @@ extension HomeTarget: TargetType {
     
     var task: Task {
         switch self {
-        case .getAllTags(_):
+        case .getAllTags(_),.getAllMeals(_):
             return .requestPlain
         }
     }

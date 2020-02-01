@@ -11,8 +11,12 @@ import UIKit
 class HomeViewController: UIViewController {
     
     var presenter : HomePresenter!
-    var tagsDataSource:TagsDataSource!
     
+    var mealsDataSource:MealTableDataSource!
+    var tagsDataSource:TagsDataSource!
+    var isFirstTime = true
+    
+    @IBOutlet weak var mealsTableView: UITableView!
     @IBOutlet weak var tagsCollection: UICollectionView!
     
     override func viewDidLoad() {
@@ -23,14 +27,19 @@ class HomeViewController: UIViewController {
     
 }
 
-extension HomeViewController:HomeView ,TagsDataSourceActions {
+extension HomeViewController:HomeView ,TagsDataSourceActions ,MealDatasourceDelegate{
     
     func didLoadAllTags(tags: [TagModel]) {
         DispatchQueue.main.async {
             self.tagsDataSource = TagsDataSource(collection: self.tagsCollection, tags: tags,delegate: self)
         }
+        if isFirstTime {
+            isFirstTime = false
+            self.presenter.getAllMeals(str: tags[0].tagName!)
+        }
         
     }
+    
     func loadTheNextPage() {
         // Load Next Page
         self.presenter.getAllTags()
@@ -38,6 +47,15 @@ extension HomeViewController:HomeView ,TagsDataSourceActions {
     
     func didSelectTag(tag: TagModel) {
         // Call The List API
+        self.presenter.getAllMeals(str: tag.tagName!)
+    }
+    
+    func didLoadAllMeals(meals: [MealModel]) {
+        mealsDataSource = MealTableDataSource(delegate: self, tableView: self.mealsTableView, meals: meals)
+    }
+    
+    func didSelectMeal(meal: MealModel) {
+        
     }
     func showError(errorStr: String) {
         // SHow ERROR

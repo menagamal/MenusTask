@@ -29,6 +29,18 @@ class HomePresenter: HomePresenterDelegate {
         self.view = view
     }
     
+    func getAllMeals(str:String)  {
+        interactor?.getAllMeals(str: str, completation: { (response) in
+            
+            if let error = response.0 {
+                self.view?.showError(errorStr: error.localizedDescription)
+            } else {
+                let meals = response.1
+                self.view?.didLoadAllMeals(meals: meals)
+            }
+        })
+    }
+    
     func getAllTags() {
         interactor?.getAllTags(index: pageCounter, completation: { (response) in
             

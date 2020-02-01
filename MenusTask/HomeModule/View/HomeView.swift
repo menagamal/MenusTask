@@ -10,5 +10,6 @@ import Foundation
 
 protocol HomeView:class {
     func didLoadAllTags(tags:[TagModel])
+    func didLoadAllMeals(meals:[MealModel])
     func showError(errorStr:String)
 }

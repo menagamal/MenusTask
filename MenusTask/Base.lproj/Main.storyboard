@@ -16,10 +16,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FCX-Ju-ju9">
-                                <rect key="frame" x="4" y="88" width="406" height="200"/>
+                                <rect key="frame" x="4" y="88" width="406" height="150"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="rMd-fs-QvF"/>
+                                    <constraint firstAttribute="height" constant="150" id="rMd-fs-QvF"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cRb-mY-0jC">
                                     <size key="itemSize" width="50" height="50"/>
@@ -29,17 +29,26 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fRM-Bd-VgD">
+                                <rect key="frame" x="0.0" y="238" width="414" height="624"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fRM-Bd-VgD" secondAttribute="trailing" id="5Pz-dW-Zem"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fRM-Bd-VgD" secondAttribute="bottom" id="FlS-iT-2fn"/>
                             <constraint firstItem="FCX-Ju-ju9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LxV-dg-uKA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FCX-Ju-ju9" secondAttribute="trailing" constant="4" id="RHS-Uz-8bF"/>
+                            <constraint firstItem="fRM-Bd-VgD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="c98-bC-YDG"/>
                             <constraint firstItem="FCX-Ju-ju9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="hhR-0v-ctb"/>
+                            <constraint firstItem="fRM-Bd-VgD" firstAttribute="top" secondItem="FCX-Ju-ju9" secondAttribute="bottom" id="wrK-Ni-pZ7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="fMQ-u2-JcP"/>
                     <connections>
+                        <outlet property="mealsTableView" destination="fRM-Bd-VgD" id="fF1-m7-Sfa"/>
                         <outlet property="tagsCollection" destination="FCX-Ju-ju9" id="BQu-aH-F1O"/>
                     </connections>
                 </viewController>
@@ -55,6 +64,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TU4-M8-LP5">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.27058823529999998" green="0.30980392159999998" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
