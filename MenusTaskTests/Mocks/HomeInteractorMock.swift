@@ -11,6 +11,16 @@ import Foundation
 
 
 class HomeInteractorMock: HomeUseCase {
+    func getAllMeals(str: String, completation: @escaping ((HomeMealsResponse) -> Void)) {
+        let temp = HomeTarget.getAllMeals(str: str).sampleData
+        do {
+            let responseModel: MealResponse = try JSONDecoder().decode(MealResponse.self, from: temp)
+            completation((nil,responseModel.items!))
+        } catch {
+            completation((HomeConstant.HomeError.ParsingError,[MealModel]()))
+        }
+    }
+    
     
     func getAllTags(index: Int, completation: @escaping ((HomeTagResponse) -> Void)) {
         let temp = HomeTarget.getAllTags(index: 0).sampleData

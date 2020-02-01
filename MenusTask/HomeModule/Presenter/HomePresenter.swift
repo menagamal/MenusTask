@@ -30,6 +30,7 @@ class HomePresenter: HomePresenterDelegate {
     }
     
     func getAllMeals(str:String)  {
+        
         interactor?.getAllMeals(str: str, completation: { (response) in
             
             if let error = response.0 {

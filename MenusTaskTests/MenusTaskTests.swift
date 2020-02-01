@@ -23,7 +23,7 @@ class MenusTaskTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testHomeInteractor()  {
+    func testGetAllTags()  {
         homeInteractor.getAllTags(index: 0) { (result) in
             XCTAssertNotNil(result.1)
             XCTAssertNil(result.0)
@@ -32,5 +32,14 @@ class MenusTaskTests: XCTestCase {
             }
         }
     }
-
+    func testGetAllMeals()  {
+        homeInteractor.getAllMeals(str: "testName") { (result) in
+            XCTAssertNotNil(result.1)
+            XCTAssertNil(result.0)
+            if result.1.isEmpty {
+                XCTFail()
+            }
+        }
+    }
+    
 }

@@ -52,13 +52,20 @@ extension HomeViewController:HomeView ,TagsDataSourceActions ,MealDatasourceDele
     
     func didLoadAllMeals(meals: [MealModel]) {
         mealsDataSource = MealTableDataSource(delegate: self, tableView: self.mealsTableView, meals: meals)
+        DispatchQueue.main.async {
+            self.mealsTableView.setContentOffset(.zero, animated: true)
+        }
+        
+
     }
     
     func didSelectMeal(meal: MealModel) {
+        //
         
     }
     func showError(errorStr: String) {
         // SHow ERROR
+        self.showErrorMessage(error: errorStr)
         
     }
     
