@@ -9,6 +9,11 @@
 import Foundation
 
 enum HomeConstant {
+    struct Keys {
+        static let cachedItems = "cachedItems"
+    }
+    
+    
     enum API {
         enum getAllTags {
             static let endPoint = "tags"

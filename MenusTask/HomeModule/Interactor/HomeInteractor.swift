@@ -8,32 +8,35 @@
 
 import Foundation
 import Moya
-
+import DataCache
 
 typealias HomeTagResponse = (Error?,[TagModel])
 typealias HomeMealsResponse = (Error?,[MealModel])
 
 protocol HomeUseCase {
     func getAllTags(index:Int,completation:@escaping( (HomeTagResponse)-> Void))
-    func getAllMeals(str:String,completation:@escaping( (HomeMealsResponse)-> Void))
+    func getAllMeals(tag:TagModel,completation:@escaping( (HomeMealsResponse)-> Void))
+    func CacheData(tag:TagModel,meals:[MealModel])
+    func loadAllCachedData() -> ArrayOfCachedModule?
 }
 
 class HomeInteractor: HomeUseCase {
+    
+    
     
     var provider = MoyaProvider<HomeTarget>(callbackQueue: DispatchQueue.global(qos: .utility))
     var tags = [TagModel]()
     var items = [MealModel]()
     
-    func getAllMeals(str: String, completation: @escaping ((HomeMealsResponse) -> Void)) {
-//        LoadingView.shared.startLoading()
-        provider.request(.getAllMeals(str: str)) { result in
-            //LoadingView.shared.stopLoading()
+    func getAllMeals(tag:TagModel, completation: @escaping ((HomeMealsResponse) -> Void)) {
+        provider.request(.getAllMeals(str: tag.tagName!)) { result in
             switch(result) {
             case .success(let response):
                 DispatchQueue.main.async {
                     do {
                         if response.statusCode == AppConstant.API.Codes.success.rawValue {
                             let responseModel: MealResponse = try response.map(MealResponse.self)
+                            self.CacheData(tag: tag, meals: responseModel.items!)
                             
                             completation((nil,responseModel.items!))
                         } else {
@@ -52,9 +55,7 @@ class HomeInteractor: HomeUseCase {
     }
     
     func getAllTags(index: Int, completation: @escaping((HomeTagResponse) -> Void)) {
-//        LoadingView.shared.startLoading()
         provider.request(.getAllTags(index: index)) { result in
-//            LoadingView.shared.stopLoading()
             switch(result) {
             case .success(let response):
                 DispatchQueue.main.async {
@@ -80,5 +81,13 @@ class HomeInteractor: HomeUseCase {
         }
         
     }
+    
+    func CacheData(tag: TagModel, meals: [MealModel]) {
+        CacheHandler.SaveData(tag: tag, meals: meals)
+    }
+    func loadAllCachedData() -> ArrayOfCachedModule? {
+        return CacheHandler.loadAllCachedData()
+    }
+    
     
 }

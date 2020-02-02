@@ -11,6 +11,7 @@ target 'MenusTask' do
   pod 'SDWebImage', '~> 4.0'
   pod 'Toast-Swift'
   pod 'Hero'
+  pod 'DataCache'
 
   target 'MenusTaskTests' do
     inherit! :search_paths

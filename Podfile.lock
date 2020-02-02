@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.9.1)
+  - DataCache (1.5)
   - Hero (1.5.0)
   - IQKeyboardManagerSwift (6.5.4)
   - Moya (13.0.1):
@@ -14,6 +15,7 @@ PODS:
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
+  - DataCache
   - Hero
   - IQKeyboardManagerSwift
   - Moya
@@ -23,6 +25,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - DataCache
     - Hero
     - IQKeyboardManagerSwift
     - Moya
@@ -32,6 +35,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  DataCache: 8099e01aa35c2fd30f3410aae14ef5a130f6524b
   Hero: b7385b75e7259da62f4f85462f59a5082d66b058
   IQKeyboardManagerSwift: 2dde0fc70110e8eac7ccce2a46fdbec6a850b414
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
@@ -39,6 +43,6 @@ SPEC CHECKSUMS:
   SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 943f1e6687307b09e1617dbde6223b2a2f620f92
+PODFILE CHECKSUM: c7d8058e410e55092e72f68d63ef8d11ace76ac3
 
 COCOAPODS: 1.8.0.beta.2

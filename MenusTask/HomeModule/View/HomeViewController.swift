@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class HomeViewController: UIViewController {
     
@@ -25,7 +26,13 @@ class HomeViewController: UIViewController {
         
         self.mealsTableView.hero.id = "bar"
         presenter = HomePresenter(interactor: HomeInteractor(), router: HomeRouter(navigationController: self.navigationController!), view: self)
-        presenter.getAllTags()
+        
+        if NetworkReachabilityManager()!.isReachable {
+            presenter.getAllTags()
+        } else {
+            presenter.loadCachedData()
+        }
+        
     }
     
 }
@@ -38,7 +45,8 @@ extension HomeViewController:HomeView ,TagsDataSourceActions ,MealDatasourceDele
         }
         if isFirstTime {
             isFirstTime = false
-            self.presenter.getAllMeals(str: tags[0].tagName!)
+            self.presenter.getAllMeals(tag: tags[0])
+            
         }
         
     }
@@ -50,7 +58,7 @@ extension HomeViewController:HomeView ,TagsDataSourceActions ,MealDatasourceDele
     
     func didSelectTag(tag: TagModel) {
         // Call The List API
-        self.presenter.getAllMeals(str: tag.tagName!)
+        self.presenter.getAllMeals(tag: tag)
     }
     
     func didLoadAllMeals(meals: [MealModel]) {
@@ -59,7 +67,7 @@ extension HomeViewController:HomeView ,TagsDataSourceActions ,MealDatasourceDele
             self.mealsTableView.setContentOffset(.zero, animated: true)
         }
         
-
+        
     }
     
     func didSelectMeal(meal: MealModel) {

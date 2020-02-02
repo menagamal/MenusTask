@@ -37,7 +37,13 @@ class MealTableDataSource:  NSObject, UITableViewDataSource,UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MealTableViewCell", for: indexPath) as! MealTableViewCell
-        cell.setDetails(meal: meals[indexPath.row])
+        cell.setDetails(meal: meals[indexPath.row], completation: { img in
+            
+            let imageData = img.pngData()
+            let imageToBaseStr = imageData!.base64EncodedString(options: .lineLength76Characters)
+            self.meals[indexPath.row].imageBase64 = imageToBaseStr
+
+        })
         return cell
     }
     

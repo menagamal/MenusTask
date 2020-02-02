@@ -46,7 +46,11 @@ class TagsDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCollectionViewCell",for: indexPath) as! TagCollectionViewCell
-        cell.setDetails(tag: tags[indexPath.row])
+        cell.setDetails(tag: tags[indexPath.row], completation: { img in
+            let imageData = img.pngData()
+            let imageToBaseStr = imageData!.base64EncodedString(options: .lineLength76Characters)
+            self.tags[indexPath.row].imageBase64 = imageToBaseStr
+        })
         
         return cell
     }

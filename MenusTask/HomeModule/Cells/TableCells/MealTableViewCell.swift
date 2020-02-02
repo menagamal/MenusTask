@@ -9,14 +9,22 @@
 import UIKit
 
 class MealTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var mealImageView: UIImageView!
     @IBOutlet weak var labelId: UILabel!
     @IBOutlet weak var labelName: UILabel!
     
-    func setDetails(meal:MealModel) {
-        if let url = meal.photoUrl {
-            mealImageView.setImageWithUrl(url: url)
+    func setDetails(meal:MealModel,completation:@escaping((_ image:UIImage)->Void)) {
+        if meal.imageBase64 != nil {
+            
+            let dataDecoded : Data = Data(base64Encoded: meal.imageBase64!, options: .ignoreUnknownCharacters)!
+            let decodedimage:UIImage = UIImage(data: dataDecoded)!
+            self.mealImageView.image = decodedimage
+            
+        } else if let url = meal.photoUrl {
+            mealImageView.sd_setImage(with: URL(string: url)!) { (img, err, typ, ur) in
+                completation(img!)
+            }
         }
         
         
