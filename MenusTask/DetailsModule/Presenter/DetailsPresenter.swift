@@ -32,7 +32,7 @@ class DetailsPresenter: DetailsPresenterDelegate {
         if let meal = interactor?.getMealDetails() {
             self.view?.labelId.text = "#\(meal.id!)"
             self.view?.labelName.text = meal.name
-            self.view?.labelDesc.text = meal.description
+            self.view?.labelDesc.text = meal.descriptionStr
             self.view?.mealImageView.setImageWithUrl(url: meal.photoUrl!)
         } else {
             self.view?.showError(errorStr: DetailsError.FoundNil.localizedDescription)
